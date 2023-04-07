@@ -20,7 +20,9 @@ const Untitled14 = () => {
         navigation.navigate("Untitled24");
       }}><Text style={styles.GxGjMvzE}>Tickets</Text></Pressable><Pressable onPress={() => {
         navigation.navigate("notifications");
-      }}><Text style={styles.NcWkesUO}>Notification icon</Text></Pressable></ScrollView>
+      }}><Text style={styles.NcWkesUO}>Notification icon</Text></Pressable><Pressable onPress={() => {
+        navigation.navigate("settings");
+      }}><Text style={styles.Unjaijss}>Settings</Text></Pressable></ScrollView>
     </SafeAreaView>;
 };
 
@@ -50,6 +52,13 @@ const styles = StyleSheet.create({
     borderRadius: 0
   },
   NcWkesUO: {
+    width: 100,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 14,
+    borderRadius: 0
+  },
+  Unjaijss: {
     width: 100,
     height: 50,
     lineHeight: 14,
