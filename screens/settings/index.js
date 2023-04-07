@@ -1,7 +1,10 @@
+import { useNavigation } from "@react-navigation/native";
+import { Pressable } from "react-native";
 import * as React from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
 
 const Settings = () => {
+  const navigation = useNavigation();
   return <View style={styles.container}>
 
       <View style={styles.mainSection}>
@@ -13,10 +16,12 @@ const Settings = () => {
           <Image style={styles.emailsupportIcon} source={require("./assets/emailsupport.png")} />
           <Text style={styles.emailsupportText}>Email Support</Text>
         </View>
-        <View style={styles.invitefriendsSupport}>
+        <Pressable onPress={() => {
+        navigation.navigate("inviteFriends");
+      }}><View style={styles.invitefriendsSupport}>
           <Image style={styles.inviteFriendsIcon} source={require("./assets/invitefriends.png")} />
           <Text style={styles.inviteFriendsText}>Invite Friends</Text>
-        </View>
+        </View></Pressable>
         <View style={styles.pushNotifications}>
           <View style={styles.pushnoti}>
             <Image style={styles.pushnotificationsIcon} source={require("./assets/bell.png")} />
@@ -40,7 +45,9 @@ const Settings = () => {
           <Text style={styles.inviteFriendsText}>About Us</Text>
         </View>
       </View>
-    </View>;
+    <Pressable onPress={() => {
+      navigation.navigate("Terms and Conditions");
+    }}><Text style={styles.URLJrClt}>Terms and conditions</Text></Pressable><Text style={styles.jOzAlcKr}>Lorem ipsum…</Text></View>;
 };
 
 const styles = StyleSheet.create({
@@ -161,6 +168,20 @@ const styles = StyleSheet.create({
     width: 20,
     backgroundColor: "#000000",
     borderRadius: 10
+  },
+  URLJrClt: {
+    width: 100,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 14,
+    borderRadius: 0
+  },
+  jOzAlcKr: {
+    width: 100,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 14,
+    borderRadius: 0
   }
 });
 export default Settings;
