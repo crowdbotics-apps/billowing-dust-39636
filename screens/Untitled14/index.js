@@ -16,7 +16,9 @@ const Untitled14 = () => {
         navigation.navigate("eventHome");
       }}><Text style={styles.PafGMwaP}>Events</Text></Pressable><Pressable onPress={() => {
         navigation.navigate("Untitled20");
-      }}><Text style={styles.OCIABZhS}>create event</Text></Pressable></ScrollView>
+      }}><Text style={styles.OCIABZhS}>create event</Text></Pressable><Pressable onPress={() => {
+        navigation.navigate("Untitled24");
+      }}><Text style={styles.GxGjMvzE}>Tickets</Text></Pressable></ScrollView>
     </SafeAreaView>;
 };
 
@@ -32,6 +34,13 @@ const styles = StyleSheet.create({
     borderRadius: 0
   },
   OCIABZhS: {
+    width: 100,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 14,
+    borderRadius: 0
+  },
+  GxGjMvzE: {
     width: 100,
     height: 50,
     lineHeight: 14,
