@@ -358,7 +358,7 @@ const UpcomingEvent = ({
   const navigation = useNavigation();
   return <View style={upcomingEventStyles.container}>
       <Pressable onPress={() => {
-      navigation.navigate("eventDetails");
+      navigation.navigate("Untitled19");
     }}><Image source={event.image} style={upcomingEventStyles.image} /></Pressable>
       <View style={upcomingEventStyles.content}>
         <Text style={upcomingEventStyles.title}>{event.title}</Text>

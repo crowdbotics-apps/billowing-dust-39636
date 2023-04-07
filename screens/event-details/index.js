@@ -1,7 +1,9 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, ScrollView, Image, Pressable } from "react-native";
 
 const EventDetails = () => {
+  const navigation = useNavigation();
   const [event, setEvent] = useState({});
   useEffect(() => {
     setEvent({
@@ -54,7 +56,9 @@ const EventDetails = () => {
             </View>
           </View>
           <Text style={styles.heading}>Event info</Text>
-          <Text style={styles.description}>{event.info}</Text>
+          <Pressable onPress={() => {
+          navigation.navigate("Untitled19");
+        }}><Text style={styles.description}>{event.info}</Text></Pressable>
         </View>
         <View style={styles.button}>
           <Button buttonText={"Book Event"} />
