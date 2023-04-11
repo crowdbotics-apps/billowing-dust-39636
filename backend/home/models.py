@@ -79,12 +79,15 @@ class Settings(models.Model):
     dateUpdated = models.DateTimeField(null=True,blank=True,)
 class Roles(models.Model):
     'Generated Model'
-    name = models.TextField()
-    groupID = models.IntegerField()
+    title = models.TextField(blank=True,)
+    groupID = models.IntegerField(blank=True,)
+    slug = models.TextField(null=True,blank=True,)
+    description = models.TextField(null=True,blank=True,)
+    status = models.BooleanField(null=True,blank=True,)
 class Permissions(models.Model):
     'Generated Model'
     title = models.TextField()
     status = models.BooleanField()
     objectID = models.IntegerField()
-    roleID = models.ForeignKey("home.Roles",on_delete=models.CASCADE,null=True,blank=True,related_name="permissions_roleID",)
-    userID = models.ForeignKey("users.User",on_delete=models.CASCADE,null=True,blank=True,related_name="permissions_userID",)
+    roleID = models.ForeignKey("home.Roles",null=True,blank=True,on_delete=models.CASCADE,related_name="permissions_roleID",)
+    userID = models.ForeignKey("users.User",null=True,blank=True,on_delete=models.CASCADE,related_name="permissions_userID",)

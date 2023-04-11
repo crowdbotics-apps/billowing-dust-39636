@@ -19,8 +19,11 @@ class User(AbstractUser):
     everything that relates with an `User` is represented by this model.
     """
     name = models.CharField(null=True,blank=True,max_length=255,)
-    full_name = models.TextField(null=True,blank=True,)
-    email = models.EmailField(max_length=254,null=True,blank=True,)
+    email = models.EmailField(null=True,blank=True,max_length=254,)
     mobile = models.IntegerField(null=True,blank=True,)
+    last_name = models.TextField(null=True,blank=True,)
+    passwordHash = models.TextField(null=True,blank=True,)
+    user_id = models.TextField(null=True,blank=True,)
+    profileID = models.IntegerField(null=True,blank=True,)
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})
