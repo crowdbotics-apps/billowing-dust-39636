@@ -13,7 +13,6 @@ class Notification(models.Model):
 class AuditLog(models.Model):
     'Generated Model'
     content = models.BigIntegerField()
-    objectID = models.IntegerField()
     datetime = models.DateTimeField()
     recordID = models.IntegerField()
     action = models.TextField()
@@ -31,8 +30,10 @@ class Bookings(models.Model):
     userID = models.ForeignKey("users.User",null=True,blank=True,on_delete=models.CASCADE,related_name="bookings_userID",)
 class Content(models.Model):
     'Generated Model'
-    type = models.TextField()
-    body = models.TextField()
+    type = models.TextField(blank=True,)
+    description = models.TextField(blank=True,)
+    title = models.TextField(null=True,blank=True,)
+    status = models.BooleanField(null=True,blank=True,)
 class Events(models.Model):
     'Generated Model'
     title = models.TextField()
