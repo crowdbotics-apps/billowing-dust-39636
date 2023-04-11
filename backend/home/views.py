@@ -1,4 +1,4 @@
-from .models import AuditLog, Bookings, Content, Events, Notification, UserType
+from .models import AuditLog, Tickets, Bookings, UserType, Content, Events, PaymentMethod, Notification, Payments
 from django.views.generic import CreateView, UpdateView, DetailView, ListView
 from django.shortcuts import render
 

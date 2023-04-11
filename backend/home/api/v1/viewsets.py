@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from home.models import AuditLog,Bookings,Content,Events,Notification,PaymentMethod,Payments,Tickets,UserType
-from .serializers import AuditLogSerializer,BookingsSerializer,ContentSerializer,EventsSerializer,NotificationSerializer,PaymentMethodSerializer,PaymentsSerializer,TicketsSerializer,UserTypeSerializer
+from home.models import Analytics,AuditLog,Bookings,Content,Events,Groups,Notification,PaymentMethod,Payments,Permissions,Roles,Settings,Tickets,UserType
+from .serializers import AnalyticsSerializer,AuditLogSerializer,BookingsSerializer,ContentSerializer,EventsSerializer,GroupsSerializer,NotificationSerializer,PaymentMethodSerializer,PaymentsSerializer,PermissionsSerializer,RolesSerializer,SettingsSerializer,TicketsSerializer,UserTypeSerializer
 from rest_framework import authentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.viewsets import ModelViewSet, ViewSet
@@ -77,3 +77,28 @@ class PaymentsViewSet(viewsets.ModelViewSet):
     serializer_class = PaymentsSerializer
     authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
     queryset = Payments.objects.all()
+
+class AnalyticsViewSet(viewsets.ModelViewSet):
+    serializer_class = AnalyticsSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = Analytics.objects.all()
+
+class GroupsViewSet(viewsets.ModelViewSet):
+    serializer_class = GroupsSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = Groups.objects.all()
+
+class SettingsViewSet(viewsets.ModelViewSet):
+    serializer_class = SettingsSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = Settings.objects.all()
+
+class RolesViewSet(viewsets.ModelViewSet):
+    serializer_class = RolesSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = Roles.objects.all()
+
+class PermissionsViewSet(viewsets.ModelViewSet):
+    serializer_class = PermissionsSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = Permissions.objects.all()

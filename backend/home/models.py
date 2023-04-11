@@ -20,17 +20,15 @@ class AuditLog(models.Model):
     userID = models.ForeignKey("users.User",on_delete=models.CASCADE,related_name="auditlog_userID",)
 class UserType(models.Model):
     'Generated Model'
-    full_name = models.TextField()
-    email = models.EmailField(max_length=254,)
     status = models.BooleanField()
-    mobile = models.IntegerField()
     roleID = models.IntegerField()
     userID = models.ForeignKey("users.User",null=True,blank=True,on_delete=models.CASCADE,related_name="usertype_userID",)
+    type_name = models.TextField(null=True,blank=True,)
 class Bookings(models.Model):
     'Generated Model'
     status = models.IntegerField()
     eventID = models.ForeignKey("home.Events",on_delete=models.CASCADE,related_name="bookings_eventID",)
-    userID = models.ForeignKey("users.User",on_delete=models.CASCADE,null=True,blank=True,related_name="bookings_userID",)
+    userID = models.ForeignKey("users.User",null=True,blank=True,on_delete=models.CASCADE,related_name="bookings_userID",)
 class Content(models.Model):
     'Generated Model'
     type = models.TextField()
@@ -47,7 +45,7 @@ class Events(models.Model):
 class PaymentMethod(models.Model):
     'Generated Model'
     typename = models.IntegerField()
-    typeID = models.ForeignKey("home.Payments",on_delete=models.CASCADE,null=True,blank=True,related_name="paymentmethod_typeID",)
+    typeID = models.ForeignKey("home.Payments",null=True,blank=True,on_delete=models.CASCADE,related_name="paymentmethod_typeID",)
 class Tickets(models.Model):
     'Generated Model'
     price = models.FloatField()
@@ -59,3 +57,34 @@ class Payments(models.Model):
     status = models.IntegerField()
     bookingID = models.ForeignKey("home.Bookings",on_delete=models.CASCADE,related_name="payments_bookingID",)
     typeID = models.IntegerField()
+class Analytics(models.Model):
+    'Generated Model'
+    kpi_name = models.TextField()
+    kpi_value = models.TextField()
+    eventID = models.ForeignKey("home.Events",on_delete=models.CASCADE,related_name="analytics_eventID",)
+    bookingID = models.ForeignKey("home.Bookings",on_delete=models.CASCADE,related_name="analytics_bookingID",)
+    userID = models.ForeignKey("users.User",on_delete=models.CASCADE,related_name="analytics_userID",)
+class Groups(models.Model):
+    'Generated Model'
+    name = models.TextField()
+    userID = models.ForeignKey("users.User",on_delete=models.CASCADE,related_name="groups_userID",)
+    roleID = models.ForeignKey("home.Roles",on_delete=models.CASCADE,related_name="groups_roleID",)
+class Settings(models.Model):
+    'Generated Model'
+    type = models.IntegerField()
+    userID = models.ForeignKey("users.User",on_delete=models.CASCADE,related_name="settings_userID",)
+    status = models.BooleanField(null=True,blank=True,)
+    value = models.TextField(null=True,blank=True,)
+    description = models.TextField(null=True,blank=True,)
+    dateUpdated = models.DateTimeField(null=True,blank=True,)
+class Roles(models.Model):
+    'Generated Model'
+    name = models.TextField()
+    groupID = models.IntegerField()
+class Permissions(models.Model):
+    'Generated Model'
+    title = models.TextField()
+    status = models.BooleanField()
+    objectID = models.IntegerField()
+    roleID = models.ForeignKey("home.Roles",on_delete=models.CASCADE,null=True,blank=True,related_name="permissions_roleID",)
+    userID = models.ForeignKey("users.User",on_delete=models.CASCADE,null=True,blank=True,related_name="permissions_userID",)
