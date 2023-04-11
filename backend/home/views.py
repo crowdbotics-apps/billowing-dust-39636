@@ -1,3 +1,5 @@
+from .models import AuditLog, Bookings, Content, Events, Notification, UserType
+from django.views.generic import CreateView, UpdateView, DetailView, ListView
 from django.shortcuts import render
 
 

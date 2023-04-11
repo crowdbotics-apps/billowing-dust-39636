@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from home.models import AuditLog,Bookings,Content,Events,Notification,UserType
-from .serializers import AuditLogSerializer,BookingsSerializer,ContentSerializer,EventsSerializer,NotificationSerializer,UserTypeSerializer
+from home.models import AuditLog,Bookings,Content,Events,Notification,PaymentMethod,Payments,Tickets,UserType
+from .serializers import AuditLogSerializer,BookingsSerializer,ContentSerializer,EventsSerializer,NotificationSerializer,PaymentMethodSerializer,PaymentsSerializer,TicketsSerializer,UserTypeSerializer
 from rest_framework import authentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.viewsets import ModelViewSet, ViewSet
@@ -62,3 +62,18 @@ class EventsViewSet(viewsets.ModelViewSet):
     serializer_class = EventsSerializer
     authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
     queryset = Events.objects.all()
+
+class PaymentMethodViewSet(viewsets.ModelViewSet):
+    serializer_class = PaymentMethodSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = PaymentMethod.objects.all()
+
+class TicketsViewSet(viewsets.ModelViewSet):
+    serializer_class = TicketsSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = Tickets.objects.all()
+
+class PaymentsViewSet(viewsets.ModelViewSet):
+    serializer_class = PaymentsSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = Payments.objects.all()
