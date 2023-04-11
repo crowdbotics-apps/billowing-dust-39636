@@ -1,3 +1,7 @@
+from rest_framework import viewsets
+from home.models import AuditLog,Bookings,Content,Events,Notification,UserType
+from .serializers import AuditLogSerializer,BookingsSerializer,ContentSerializer,EventsSerializer,NotificationSerializer,UserTypeSerializer
+from rest_framework import authentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.viewsets import ModelViewSet, ViewSet
 from rest_framework.authtoken.models import Token
@@ -28,3 +32,33 @@ class LoginViewSet(ViewSet):
         token, created = Token.objects.get_or_create(user=user)
         user_serializer = UserSerializer(user)
         return Response({"token": token.key, "user": user_serializer.data})
+
+class NotificationViewSet(viewsets.ModelViewSet):
+    serializer_class = NotificationSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = Notification.objects.all()
+
+class AuditLogViewSet(viewsets.ModelViewSet):
+    serializer_class = AuditLogSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = AuditLog.objects.all()
+
+class UserTypeViewSet(viewsets.ModelViewSet):
+    serializer_class = UserTypeSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = UserType.objects.all()
+
+class BookingsViewSet(viewsets.ModelViewSet):
+    serializer_class = BookingsSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = Bookings.objects.all()
+
+class ContentViewSet(viewsets.ModelViewSet):
+    serializer_class = ContentSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = Content.objects.all()
+
+class EventsViewSet(viewsets.ModelViewSet):
+    serializer_class = EventsSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = Events.objects.all()

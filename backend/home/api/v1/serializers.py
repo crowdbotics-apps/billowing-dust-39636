@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from home.models import AuditLog,Bookings,Content,Events,Notification,UserType
 from django.http import HttpRequest
 from django.utils.translation import ugettext_lazy as _
 from allauth.account import app_settings as allauth_settings
@@ -74,3 +75,39 @@ class UserSerializer(serializers.ModelSerializer):
 class PasswordSerializer(PasswordResetSerializer):
     """Custom serializer for rest_auth to solve reset password error"""
     password_reset_form_class = ResetPasswordForm
+
+class UserTypeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UserType
+        fields = "__all__"
+
+class ContentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Content
+        fields = "__all__"
+
+class EventsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Events
+        fields = "__all__"
+
+class NotificationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Notification
+        fields = "__all__"
+
+class AuditLogSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = AuditLog
+        fields = "__all__"
+
+class BookingsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Bookings
+        fields = "__all__"
